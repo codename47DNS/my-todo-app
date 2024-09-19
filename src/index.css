@@ -1,0 +1,34 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+	--scrollTrack: rgb(222, 222, 222);
+	--scrollThumb: rgb(255, 126, 126);
+	--scrollWidth: 10px;
+}
+
+html,
+body,
+#root {
+	width: 100%;
+	height: 100%;
+}
+
+
+*::-webkit-scrollbar {
+	width: var(--scrollWidth);
+	background-color: var(--scrollTrack);
+	border-radius: 2rem;
+	overflow: hidden;
+}
+
+*::-webkit-scrollbar-thumb {
+	background-color: var(--scrollThumb);
+	border-radius: 2rem;
+}
+
+* {
+	/* scroll-behavior: smooth; */
+	box-sizing: border-box;
+}
