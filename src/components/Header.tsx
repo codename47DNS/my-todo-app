@@ -55,7 +55,7 @@ function Header() {
 	};
 
 	return (
-		<header className="flex w-full justify-center bg-[url('bg-desktop-light.jpg')] dark:bg-[url('bg-desktop-dark.jpg')] bg-cover bg-no-repeat py-12">
+		<header className="flex w-full justify-center bg-[url('/bg-desktop-light.jpg')] dark:bg-[url('/bg-desktop-dark.jpg')] bg-cover bg-no-repeat py-12">
 			<div className="w-full min-w-[240px] px-8 max-w-2xl py-5">
 				<div className="mb-8 flex justify-between">
 					<h1 className="text-4xl font-semibold text-white">TODO</h1>
