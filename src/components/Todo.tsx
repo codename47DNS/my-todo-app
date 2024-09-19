@@ -73,13 +73,13 @@ function Todo() {
 	}, [filterType]);
 
 	return (
-		<div className="flex h-full flex-col gap-5 bg-white dark:bg-slate-700">
+		<div className="min-w-[375px] flex h-full flex-col gap-5 bg-white dark:bg-slate-700">
 			<Header />
 
-			<div className="w-full max-w-4xl grow flex flex-col min-w-[240px] min-h-[240px] shadow-2xl mx-auto rounded-md overflow-hidden mb-3">
+			<div className="w-full max-w-4xl grow flex flex-col min-w-[240px] shadow-2xl mx-auto rounded-md overflow-hidden mb-3 min-h-96">
 				<Items />
 
-				<div className="flex items-center w-full dark:bg-slate-600 bg-gray-200 rounded-t-lg mt-2">
+				<div className="flex flex-wrap items-center w-full dark:bg-slate-600 bg-gray-200 rounded-t-lg mt-2">
 					<div
 						style={
 							{
@@ -100,18 +100,17 @@ function Todo() {
 						))}
 					</div>
 
-					<span className="capitalize ms-auto px-3 dark:text-white text-gray-600">
+					<span className="capitalize ms-auto px-3 py-3 dark:text-white text-gray-600 w-full sm:w-fit text-center">
 						{filterType === "all" ? "items" : filterType} : {currentTodos.length}
 					</span>
 				</div>
 
-				<div className="w-[--scrollWidth]"></div>
+				<div className={`mt-5 px-4 py-3 dark:border-slate-600 border-slate-300 border-t mx-auto w-fit text-center text-sm text-gray-400 ${currentTodos.length > 1 ? "opacity-100" : "opacity-0"}`}>
+					Drag and drop to reorder list
+				</div>
 			</div>
 
 
-			<div className={`px-4 py-3 dark:border-slate-600 border-slate-300 border-t mx-auto w-fit text-center text-sm text-gray-400 ${currentTodos.length > 1 ? "opacity-100" : "opacity-0"}`}>
-				Drag and drop to reorder list
-			</div>
 		</div>
 	);
 }

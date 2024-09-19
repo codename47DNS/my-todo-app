@@ -44,10 +44,10 @@ function TodoItem({ todo }: TodoItemType, ref: ForwardedRef<HTMLLabelElement>) {
 				"--flag-color": todo.flag,
 				zIndex: isDragging ? 2 : undefined,
 			} as any}
-			className={`${todo.id === updateId ? "duration-200 bg-orange-100 dark:bg-slate-800" : "dark:bg-black/10 bg-gray-100"} flex gap-1 rounded-md group touch-none ${isDragging ? "bg-blue-100 dark:bg-slate-800 shadow-blue-100 dark:shadow-slate-500 shadow-md" : ""} p-3 ps-0 border-l-8 border-[--flag-color]`}
+			className={`${todo.id === updateId ? "duration-200 bg-orange-100 dark:bg-slate-800" : "dark:bg-black/10 bg-gray-100"} flex gap-1 rounded-md group touch-none ${isDragging ? "bg-blue-100 dark:bg-slate-800 shadow-blue-100 dark:shadow-slate-500 shadow-md" : ""} p-3 ps-0 border-l-8 border-[--flag-color] flex-wrap`}
 		>
 			<IconButton
-				className="dark:text-gray-200 focus:dark:text-gray-300 text-gray-400 text-center cursor-move group-hover:opacity-100 duration-200 opacity-0 focus:text-gray-500 h-fit w-fit"
+				className="dark:text-gray-200 focus:dark:text-gray-300 text-gray-400 text-center cursor-move group-hover:opacity-100 duration-200 sm:opacity-0 focus:text-gray-500 h-fit w-fit"
 				{...attributes}
 				{...listeners}
 			>

@@ -69,10 +69,6 @@ function Items() {
     const diff = scrollH - labelRef.current.offsetTop;
     const labelPos = labelRef.current.offsetTop;
 
-    // if(diff < 70) {
-
-    // }
-    // setPanelPosition(labelRef.current.offsetTop - (diff < 70 ? diff + labelRef.current.offsetHeight : 0));
     setPanelPosition({
       y: labelPos,
       isNegative: diff < 70
@@ -131,5 +127,3 @@ function Items() {
 }
 
 export default Items;
-
-// watch?v=oWkscLDvrN4
