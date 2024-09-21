@@ -1,5 +1,5 @@
 import { ChangeEvent, KeyboardEvent, useRef } from "react";
-import { ThemeButton } from "./";
+import { ThemeButton, DataTray } from "./";
 import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import { AppDispatch, RootState } from "../store/store";
@@ -56,16 +56,17 @@ function Header() {
 
 	return (
 		<header className="flex w-full justify-center bg-[url('/bg-desktop-light.jpg')] dark:bg-[url('/bg-desktop-dark.jpg')] bg-cover bg-no-repeat sm:py-12">
-			<div className="w-full min-w-[240px] px-8 max-w-2xl py-5">
-				<div className="mb-8 flex justify-between">
+			<div className="w-full px-8 max-w-2xl py-5">
+				<div className="mb-8 flex gap-2">
 					<h1 className="text-4xl font-semibold text-white">TODO</h1>
+					<DataTray />
 					<ThemeButton />
 				</div>
 
 				<div className="flex">
 					<div
 						className={
-							"p-2 text-white " +
+							"p-2 text-white rounded-l-md " +
 							(update.id && update.title ? "bg-green-400" : "bg-red-400")
 						}
 					>
@@ -80,7 +81,7 @@ function Header() {
 							setTitle(e.currentTarget.value);
 						}}
 						onKeyUp={handleInput}
-						className={`w-full border-2 px-2 text-gray-500 duration-150 focus:outline-violet-500 ${update.id && update.title ? "border-green-400" : "border-red-400"}`}
+						className={`rounded-r-md w-full border-r-4 px-2 text-gray-500 duration-150 ${update.id && update.title ? "border-green-400 focus:outline-green-500" : "border-red-400 focus:outline-red-500"}`}
 						placeholder="TODO"
 					/>
 				</div>

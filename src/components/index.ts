@@ -7,6 +7,7 @@ import FilterButton from "./FilterButton";
 import Items from "./Items";
 import IconButton from "./IconButton";
 import TodoItemToolbar from "./TodoItemToolbar";
+import DataTray from "./DataTray";
 
 // Icons
 import DeleteIcon from "./icons/DeleteIcon";
@@ -17,7 +18,8 @@ import CopyIcon from "./icons/CopyIcon";
 import StarIcon from "./icons/StarIcon";
 import CheckIcon from "./icons/CheckIcon";
 import BookmarkIcon from "./icons/BookmarkIcon";
+import DataIcon from "./icons/DataIcon";
+import ImportIcon from "./icons/ImportIcon";
+import ExportIcon from "./icons/ExportIcon";
 
-
-
-export { TodoItem, Todo, ThemeButton, Header, FilterButton, Items, DeleteIcon, UpdateIcon, UpdateDisableIcon, DragIcon, IconButton, CopyIcon, TodoItemToolbar, StarIcon, CheckIcon, BookmarkIcon };
+export { TodoItem, Todo, ThemeButton, Header, FilterButton, Items, DeleteIcon, UpdateIcon, UpdateDisableIcon, DragIcon, IconButton, CopyIcon, TodoItemToolbar, StarIcon, CheckIcon, BookmarkIcon, DataIcon, DataTray, ImportIcon, ExportIcon };

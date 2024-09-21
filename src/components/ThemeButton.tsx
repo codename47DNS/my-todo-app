@@ -46,7 +46,7 @@ function ThemeButton() {
 
 	return (
 		<AnimatePresence>
-			<button onClick={handleBtn} className="overflow-hidden h-10 w-10">
+			<button title="Switch Theme" onClick={handleBtn} className="overflow-hidden h-10 w-10">
 				<motion.img
 					className="w-6"
 					initial={{ opacity: 0, y: -300 }}

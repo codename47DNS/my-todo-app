@@ -116,7 +116,23 @@ const todoSlice = createSlice({
 				color: action.payload.color,
 				id: action.payload.id
 			}
-		}
+		},
+		importData: (state, action: PayloadAction<TodoType[]>) => {
+			const data = action.payload.filter(todo => {
+				let status = true;
+
+				for (let x of state.todos.all) {
+					if (x.id === todo.id) {
+						status = false;
+						break;
+					}
+				}
+
+				return status;
+			});
+
+			state.todos.all = state.todos.all.concat(data);
+		},
 	},
 });
 
@@ -132,7 +148,8 @@ const {
 	setTheme,
 	toggleStar,
 	setFlag,
-	setFlagStatus
+	setFlagStatus,
+	importData
 } = todoSlice.actions;
 
 export default todoSlice.reducer;
@@ -148,5 +165,6 @@ export {
 	setTheme,
 	toggleStar,
 	setFlag,
-	setFlagStatus
+	setFlagStatus,
+	importData
 };

@@ -6,20 +6,17 @@ import { FilterButton, Header, Items } from "./";
 
 
 function Todo() {
-	// FIXME: Optimize code contains allTodos etc
 	const allTodos = useSelector<RootState, RootState["todos"]["all"]>(
 		(state) => state.todos.all
 	);
 	const currentTodos = useSelector<RootState, RootState["todos"]["current"]>(
 		(state) => state.todos.current
 	);
-
 	const filterType = useSelector<RootState, RootState["filterType"]>(
 		(state) => state.filterType
 	);
 
 	type FilterButtonType = typeof filterType;
-	const hasMounted = useRef(false);
 	const [tabActive, setTabActive] = useState({
 		pos: 0,
 		width: 0,
@@ -30,14 +27,16 @@ function Todo() {
 	const filterButtons: (NonNullable<FilterButtonType>)[] = ["all", "active", "completed", "starred"];
 
 	useEffect(() => {
-		if (!hasMounted.current) {
-			hasMounted.current = true;
+		const data = JSON.parse(localStorage.getItem("todos-app") ?? "[]");
 
-			const data = JSON.parse(localStorage.getItem("todos-app") ?? "[]");
+		if (Array.isArray(data) && data.length) dispatch(load(data));
+	}, []);
 
-			if (Array.isArray(data) && data.length) dispatch(load(data));
-		}
+	useEffect(() => {
+		localStorage.setItem("todos-app", JSON.stringify(allTodos));
 
+		if (filterType)
+			dispatch(filterTodos(filterType));
 	}, [allTodos]);
 
 	useEffect(() => {
@@ -54,16 +53,7 @@ function Todo() {
 
 		else
 			localStorage.setItem("filterType", filter);
-	}, [filterType]);
 
-	useEffect(() => {
-		localStorage.setItem("todos-app", JSON.stringify(allTodos));
-
-		if (filterType)
-			dispatch(filterTodos(filterType));
-	}, [allTodos]);
-
-	useEffect(() => {
 		if (!filterButton.current) return;
 
 		setTabActive({
@@ -73,10 +63,11 @@ function Todo() {
 	}, [filterType]);
 
 	return (
-		<div className="min-w-[375px] flex h-full flex-col gap-5 bg-white dark:bg-slate-700">
+		<div className="flex h-screen flex-col gap-5 bg-white dark:bg-slate-700 m-0">
 			<Header />
 
-			<div className="w-full max-w-4xl grow flex flex-col min-w-[240px] shadow-2xl mx-auto rounded-md overflow-hidden mb-3 min-h-96">
+
+			<div className="w-full max-w-4xl grow flex flex-col shadow-2xl mx-auto rounded-md overflow-hidden sm:mb-5 px-2">
 				<Items />
 
 				<div className="flex flex-wrap items-center w-full dark:bg-slate-600 bg-gray-200 rounded-t-lg mt-2">
@@ -87,7 +78,7 @@ function Todo() {
 								"--width": `${tabActive.width}px`,
 							} as any
 						}
-						className={`before:duration-200 before:content-[''] before:absolute before:border-b-2 before:border-violet-600 dark:before:border-orange-300 before:bottom-0 before:w-6 relative ${tabActive ? `before:left-[--pos] before:w-[--width]` : ""
+						className={`w-100 mx-auto sm:mx-0 before:duration-200 before:content-[''] sm:before:opacity-100 before:opacity-0 before:absolute before:border-b-2 before:border-violet-600 dark:before:border-orange-300 before:bottom-0 before:w-6 relative ${tabActive ? `before:left-[--pos] before:w-[--width]` : ""
 							} `}
 					>
 						{filterButtons.map((filter) => (
@@ -100,16 +91,19 @@ function Todo() {
 						))}
 					</div>
 
-					<span className="capitalize ms-auto px-3 py-3 dark:text-white text-gray-600 w-full sm:w-fit text-center">
+					<span className="capitalize ms-auto px-3 py-3 sm:py-0 dark:text-white text-gray-600 w-full sm:w-fit text-center">
 						{filterType === "all" ? "items" : filterType} : {currentTodos.length}
 					</span>
 				</div>
 
-				<div className={`mt-5 px-4 py-3 dark:border-slate-600 border-slate-300 border-t mx-auto w-fit text-center text-sm text-gray-400 ${currentTodos.length > 1 ? "opacity-100" : "opacity-0"}`}>
-					Drag and drop to reorder list
-				</div>
 			</div>
 
+			{
+				currentTodos.length > 0 &&
+				<div className={`px-4 sm:py-3 mb-5 dark:border-slate-600 border-slate-300 sm:border-t mx-auto w-fit text-center text-sm text-gray-400`}>
+					Drag and drop to reorder list
+				</div>
+			}
 
 		</div>
 	);

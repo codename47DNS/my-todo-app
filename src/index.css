@@ -8,6 +8,10 @@
 	--scrollWidth: 10px;
 }
 
+html {
+	min-width: 340px;
+}
+
 html,
 body,
 #root {
