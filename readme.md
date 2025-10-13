@@ -1,6 +1,6 @@
 # Todo Application
 
-This project is a **Todo List Application** built using **React**, **Redux**, **Tailwind CSS**, and the **React DnD** library for drag-and-drop functionality. It features todo management with star/unstar, filtering options, drag-and-drop reordering, import/export of todos, and a dark/light theme mode. Todo data is persisted in the browser using `localStorage`.
+This project is a **Todo List Application** built using **React**, **Redux**, **Tailwind CSS**, and the **React DnD** library. It features todo management with star/unstar, filtering options, drag-and-drop reordering, import/export of todos, and a dark/light theme mode. Todo data is persisted in the browser using `localStorage`.
 
 ## Table of Contents
 
